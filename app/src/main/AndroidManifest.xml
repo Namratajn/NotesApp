@@ -14,6 +14,12 @@
         android:theme="@style/Theme.WrapYourNotes"
         tools:targetApi="31">
         <activity
+            android:name=".NoteDetailed"
+            android:exported="false" />
+        <activity
+            android:name=".editNote"
+            android:exported="false" />
+        <activity
             android:name=".createNote"
             android:exported="false" />
         <activity

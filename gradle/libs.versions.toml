@@ -11,6 +11,7 @@ googleServices = "4.4.1"
 firebaseDatabase = "20.3.1"
 firebaseAuth = "22.3.1"
 firebaseFirestore = "24.11.0"
+firebaseUiFirestore = "8.0.2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -24,6 +25,7 @@ google-services = { group = "com.google.gms", name = "google-services", version.
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
+firebase-ui-firestore = { group = "com.firebaseui", name = "firebase-ui-firestore", version.ref = "firebaseUiFirestore" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
