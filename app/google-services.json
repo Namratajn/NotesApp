@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1096660788846",
+    "project_id": "wrapyournotes",
+    "storage_bucket": "wrapyournotes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096660788846:android:8faff868bc8d616fcfa87f",
+        "android_client_info": {
+          "package_name": "com.piyu.wrapyournotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7yBkcudhhNj0lxGyIy16UjWy1CgwWBTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
