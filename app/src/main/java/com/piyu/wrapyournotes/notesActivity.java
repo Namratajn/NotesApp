@@ -34,7 +34,6 @@ public class notesActivity extends AppCompatActivity {
         });
 
         mcreatenotefab = findViewById(R.id.createnotefab);
-
         firebaseAuth=FirebaseAuth.getInstance();
 
         mcreatenotefab.setOnClickListener(new View.OnClickListener() {
@@ -59,16 +58,6 @@ public class notesActivity extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(notesActivity.this, MainActivity.class));
         }
-
-//        switch(item.getItemId()) {
-//            case R.id.logout:
-//                firebaseAuth.signOut();
-//                finish();
-//                startActivity(new Intent(notesActivity.this, MainActivity.class));
-//                return true;
-//            default:
-//                break;
-//        }
 
         return super.onOptionsItemSelected(item);
     }

@@ -9,7 +9,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:backgroundTint="#DEFBDF">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
@@ -20,13 +21,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="All Notes"
-                android:layout_gravity="center" />
+                android:textSize="30sp"
+                android:layout_marginLeft="40dp"
+                android:textStyle="bold"
+                android:textColor="#0E9A8A"
+                />
 
         </com.google.android.material.appbar.MaterialToolbar>
+
+
     </com.google.android.material.appbar.AppBarLayout>
 
 
+    <RelativeLayout
+        android:id="@+id/centerLine4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="?actionBarSize"/>
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+
         android:id="@+id/createnotefab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,6 +56,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
+        android:layout_below="@+id/centerLine4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
