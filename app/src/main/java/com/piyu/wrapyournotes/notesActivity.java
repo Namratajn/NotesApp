@@ -59,7 +59,6 @@ public class notesActivity extends AppCompatActivity {
         });
 
         mcreatenotefab = findViewById(R.id.createnotefab);
-
         firebaseAuth=FirebaseAuth.getInstance();
 
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();

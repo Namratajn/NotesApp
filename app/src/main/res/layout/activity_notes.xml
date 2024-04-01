@@ -31,6 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="All Notes"
+<<<<<<< HEAD
                 android:textColor="#30597A"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -48,6 +49,13 @@
                 android:paddingRight="10dp"
                 android:src="@drawable/baseline_format_set_24" />
 
+=======
+                android:textSize="30sp"
+                android:layout_marginLeft="40dp"
+                android:textStyle="bold"
+                android:textColor="#0E9A8A"
+                />
+>>>>>>> 0fa7f137b33d08cfc80cf6cc83bc73284460678e
 
         </com.google.android.material.appbar.MaterialToolbar>
 

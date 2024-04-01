@@ -49,6 +49,7 @@ public class createNote extends AppCompatActivity {
 
 
 
+<<<<<<< HEAD
         msavenote=findViewById(R.id.savenote);
         mcreatecontentofnote=findViewById(R.id.createcontentofnote);
         mcreatetitleofnote=findViewById(R.id.createtitleofnote);
@@ -103,5 +104,7 @@ public class createNote extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+=======
+>>>>>>> 0fa7f137b33d08cfc80cf6cc83bc73284460678e
     }
 }
