@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-<<<<<<< HEAD
+
     android:layout_height="wrap_content"
     android:padding="15dp"
-=======
-    android:layout_height="match_parent"
->>>>>>> 0fa7f137b33d08cfc80cf6cc83bc73284460678e
+
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -32,10 +31,8 @@
                 android:orientation="horizontal">
 
                 <TextView
-<<<<<<< HEAD
 
-=======
->>>>>>> 0fa7f137b33d08cfc80cf6cc83bc73284460678e
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/notetitle"
@@ -50,7 +47,7 @@
                     />
 
                 <ImageView
-<<<<<<< HEAD
+
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:paddingBottom="13dp"
@@ -59,14 +56,7 @@
                     android:id="@+id/menupopupbutton"
                     android:layout_weight="0"
                     android:src="@drawable/baseline_format_set_24"/>
-=======
-                    android:layout_width="40dp"
-                    android:layout_height="?actionBarSize"
-                    android:layout_marginLeft="150dp"
-                    android:id="@+id/menupopupbutton"
-                    android:layout_weight="0"
-                    android:src="@drawable/more_vert"/>
->>>>>>> 0fa7f137b33d08cfc80cf6cc83bc73284460678e
+
 
             </LinearLayout>
 

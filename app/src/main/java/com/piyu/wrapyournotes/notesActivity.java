@@ -135,6 +135,8 @@ public class notesActivity extends AppCompatActivity {
                             }
                         });
 
+                        popupMenu.show();
+
                     }
                 });
 
