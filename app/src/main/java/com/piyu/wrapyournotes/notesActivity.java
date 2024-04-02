@@ -23,10 +23,13 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.play.core.integrity.IntegrityTokenRequest;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -46,6 +49,8 @@ public class notesActivity extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     FirestoreRecyclerAdapter <firebasemodel,NoteViewHolder> noteAdapter;
 
+    ImageView mlogout ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +64,16 @@ public class notesActivity extends AppCompatActivity {
         });
 
         mcreatenotefab = findViewById(R.id.createnotefab);
+
+        mlogout = findViewById(R.id.menulogout);
+
         firebaseAuth=FirebaseAuth.getInstance();
 
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
         firebaseFirestore=FirebaseFirestore.getInstance();
+
+
 
         mcreatenotefab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +108,8 @@ public class notesActivity extends AppCompatActivity {
                 noteViewHolder.notetitle.setText(firebasemodel.getTitle());
                 noteViewHolder.notecontent.setText(firebasemodel.getContent());
 
+                String docID = noteAdapter.getSnapshots().getSnapshot(i).getId();
+
                 // onclick listener to every note
                 noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -105,7 +117,12 @@ public class notesActivity extends AppCompatActivity {
                         //we have to open note detailed activity
 
                         Intent intent = new Intent(view.getContext(),NoteDetailed.class);
+                        intent.putExtra("title",firebasemodel.getTitle());
+                        intent.putExtra("content",firebasemodel.getContent());
+                        intent.putExtra("noteId",docID);
+
                                view.getContext().startActivity(intent);
+
                         //Toast.makeText(notesActivity.this, "This is clicked", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -118,10 +135,13 @@ public class notesActivity extends AppCompatActivity {
                         popupMenu.getMenu().add("Edit").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
-                                startActivity(new Intent(view.getContext(),editNote.class));
+                                //startActivity(new Intent(view.getContext(),editNote.class));
 
-//                                Intent intent = new Intent(view.getContext(),editnoteactivity.class);
-//                                view.getContext().startActivity(intent);
+                                Intent intent = new Intent(view.getContext(),editNote.class);
+                                intent.putExtra("title",firebasemodel.getTitle());
+                                intent.putExtra("content",firebasemodel.getContent());
+                                intent.putExtra("noteId",docID);
+                                view.getContext().startActivity(intent);
                                 return false;
                             }
                         });
@@ -130,7 +150,24 @@ public class notesActivity extends AppCompatActivity {
                         popupMenu.getMenu().add("Delete").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(@NonNull MenuItem menuItem) {
-                                Toast.makeText(notesActivity.this, "This note is deleted", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(notesActivity.this, "This note is deleted", Toast.LENGTH_SHORT).show();
+                                DocumentReference documentReference= firebaseFirestore.collection("notes").
+                                        document(firebaseUser.getUid()).collection("mynotes").document(docID);
+                                documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+
+                                        Toast.makeText(notesActivity.this, "This note is deleted", Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(notesActivity.this, "Failed to delete", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+
+
                                 return false;
                             }
                         });
@@ -156,6 +193,36 @@ public class notesActivity extends AppCompatActivity {
         mrecyclerview.setLayoutManager(staggeredGridLayoutManager);
 
         mrecyclerview.setAdapter(noteAdapter);
+
+
+
+
+
+
+
+
+
+
+        mlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(notesActivity.this, Logout.class));
+
+//                firebaseAuth.signOut();
+//                        finish();
+//                        startActivity(new Intent(view.getContext(), MainActivity.class));
+//
+
+
+                    }
+                });
+
+
+
+
+
+
     }
 
     @Override
@@ -164,16 +231,16 @@ public class notesActivity extends AppCompatActivity {
          return true ;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.logout) {
-                firebaseAuth.signOut();
-                finish();
-                startActivity(new Intent(notesActivity.this, MainActivity.class));
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        if (item.getItemId() == R.id.logout) {
+//                firebaseAuth.signOut();
+//                finish();
+//                startActivity(new Intent(notesActivity.this, MainActivity.class));
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
     @Override
@@ -186,7 +253,7 @@ public class notesActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         if (noteAdapter != null){
-            noteAdapter.startListening();
+            noteAdapter.stopListening();
         }
     }
 

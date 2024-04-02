@@ -40,14 +40,18 @@
 
 
             <ImageView
-                android:id="@+id/menupopupbutton"
+                android:id="@+id/menulogout"
                 android:layout_width="50dp"
                 android:layout_height="?actionBarSize"
-                android:layout_marginLeft="150dp"
+                android:layout_marginLeft="130dp"
                 android:layout_weight="0"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:src="@drawable/baseline_format_set_24" />
+                android:src="@drawable/baseline_format_set_24"
+                />
+
+
+
 
 
 

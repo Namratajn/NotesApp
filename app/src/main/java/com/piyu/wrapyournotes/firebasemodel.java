@@ -16,7 +16,7 @@ public class firebasemodel {
     }
 
     public String getTitle() {
-        return title.toUpperCase(Locale.ROOT);
+        return title;
     }
 
     public void setTitle(String title) {
